@@ -1,4 +1,4 @@
-#include <iostream>
+ #include <iostream>
 #include <fstream>
 
 using namespace std;
@@ -16,8 +16,10 @@ struct Person {
 
 
 int main(){
-  int s;
-int cantidad;
+  fstream FILE("./archivo.bin",ios::out|ios::binary);
+
+  
+  int cantidad;
   cout << "Ingrese la cantidad de registros que desea guardar: ";
   cin >> cantidad;
   cin.ignore();
@@ -43,8 +45,7 @@ int cantidad;
     cin.ignore();
     }
     FILE.close();
-    
-  do{
+
   int c;
   cout<<"Ingrese el ID del archivo que desea usar: ";
   cin>>c;
@@ -64,21 +65,9 @@ int cantidad;
  cout<<"Peso: "<<x.peso<<endl;
  cout<<"Altura: "<<x.altura<<endl;
  cout<<"Genero: "<<x.genero<<endl;
- cout<<endl;
 
-Archivo.close(); 
+ Archivo.close();
 
-
- cout<<"Desea buscar otro archivo? ";
- cout<<"(Presione 0 si ya ha terminado)"<<endl;
- cin>> s;
- cout<<endl;
-  }while(s != 0);
-
-
-
-  
-  
 
 
   return 0;
