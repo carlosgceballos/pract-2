@@ -7,7 +7,7 @@ using namespace std;
 struct Person {
   int id_registro;
   char nombre[50];
-  float cedula;
+  int cedula;
   int edad;
   float peso;
   float altura;
@@ -21,6 +21,9 @@ int cantidad;
   cout << "Ingrese la cantidad de registros que desea guardar: ";
   cin >> cantidad;
   cin.ignore();
+
+  fstream FILE("./archivo.bin",ios::out|ios::binary);
+  
   for(int i=0; i<cantidad; i++){
     Person person;
     int id = (i+1);
@@ -32,9 +35,9 @@ int cantidad;
     cin>>person.cedula;
     cout<<"Ingrese su edad: ";
     cin>>person.edad;
-    cout<<"Ingrese su peso: ";
+    cout<<"Ingrese su peso (Kg): ";
     cin>>person.peso;
-    cout<<"Ingrese su altura: ";
+    cout<<"Ingrese su altura (M): ";
     cin>>person.altura;
     cout<< "Ingrese su genero (Utilice: ""M"" para masculino, ""F"" para femenino, ""O"" para otro.): ";
     cin >> person.genero;
@@ -43,7 +46,7 @@ int cantidad;
     cin.ignore();
     }
     FILE.close();
-    
+
   do{
   int c;
   cout<<"Ingrese el ID del archivo que desea usar: ";
@@ -61,8 +64,8 @@ int cantidad;
  cout<<"Nombre: "<<x.nombre<<endl;
  cout<<"Cedula: "<<x.cedula<<endl;
  cout<<"Edad: "<<x.edad<<endl;
- cout<<"Peso: "<<x.peso<<endl;
- cout<<"Altura: "<<x.altura<<endl;
+ cout<<"Peso: "<<x.peso<<" Kg"<<endl;
+ cout<<"Altura: "<<x.altura<<" M"<<endl;
  cout<<"Genero: "<<x.genero<<endl;
  cout<<endl;
 
@@ -74,11 +77,6 @@ Archivo.close();
  cin>> s;
  cout<<endl;
   }while(s != 0);
-
-
-
-  
-  
 
 
   return 0;
