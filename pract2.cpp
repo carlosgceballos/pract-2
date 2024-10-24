@@ -16,30 +16,23 @@ struct Person {
 
 
 int main(){
-  fstream FILE("./archivo.bin",ios::out|ios::binary);
+  int c;
+  cout<<"Ingrese el ID del archivo que desea usar: ";
+  cin>>c;
+ Person x;
+ fstream FILE("./archivo.bin",ios::in|ios::binary);
+ FILE.seekg(sizeoof(Person)* c, ios::beg);
+ cout<<FILE.tellg()<<endl;
+ FILE.read(reinterpret_cast<char *>(&x),sizeof(Person));
 
-  
-  int cantidad;
-  cout << "Ingrese la cantidad de registros que desea guardar: ";
-  cin >> cantidad;
-  cin.ignore();
-  for(int i=0; i<cantidad; i++){
-    Person person;
-    cout<<"Ingrese el nombre de la persona: ";
-    cin.getline(person.nombre, 50);
-    cout<<"Ingrese su ID de registro: "; //No se si la ID se otorga o la introduce el usuario
-    cin>>person.id_registro;
-    cout<<"Ingrese su edad: ";
-    cin>>person.edad;
-    cout<<"Ingrese su peso: ";
-    cin>>person.peso;
-    cout<<"Ingrese su altura: ";
-    cin>>person.altura;
-    cout<< "Ingrese su genero (Utilice: ""M"" para masculino, ""F"" para femenino, ""O"" para otro.): ";
-    cin >> person.genero;
-    FILE.write(reinterpret_cast<char*>(&person), sizeof(Person));
-    }
-    FILE.close();
+ cout<<x.nombre;
+ cout<<x.cedula;
+ cout<<x.edad;
+ cout<<x.altura;
+ cout<<x.genero;
+
+ FILE.close()
+
 
 
   return 0;
