@@ -16,7 +16,9 @@ struct Person {
 
 
 int main(){
-  
+  int s;
+
+  do{
   int c;
   cout<<"Ingrese el ID del archivo que desea usar: ";
   cin>>c;
@@ -36,8 +38,18 @@ int main(){
  cout<<"Peso: "<<x.peso<<endl;
  cout<<"Altura: "<<x.altura<<endl;
  cout<<"Genero: "<<x.genero<<endl;
+ cout<<endl;
 
- Archivo.close();
+Archivo.close(); 
+
+
+ cout<<"Desea buscar otro archivo? ";
+ cout<<"(Presione 0 si ya ha terminado)"<<endl;
+ cin>> s;
+ cout<<endl;
+  }while(s != 0);
+
+
 
 
 
