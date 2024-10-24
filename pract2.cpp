@@ -39,6 +39,8 @@ int main(){
     cin >> person.genero;
     FILE.write(reinterpret_cast<char*>(&person), sizeof(Person));
     }
+    FILE.close();
+
 
   return 0;
 }
