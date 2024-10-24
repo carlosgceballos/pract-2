@@ -11,7 +11,7 @@ struct Person {
   int edad;
   float peso;
   float altura;
-  char genero[1];
+  char genero[2];
 };
 
 
@@ -25,10 +25,13 @@ int main(){
   cin.ignore();
   for(int i=0; i<cantidad; i++){
     Person person;
+    int id = (i+1);
+    person.id_registro = id;
+    cout<<"ID de registro: "<<id<<endl;
     cout<<"Ingrese el nombre de la persona: ";
     cin.getline(person.nombre, 50);
-    cout<<"Ingrese su ID de registro: "; //No se si la ID se otorga o la introduce el usuario
-    cin>>person.id_registro;
+    cout<<"Ingrese su cedula: ";
+    cin>>person.cedula;
     cout<<"Ingrese su edad: ";
     cin>>person.edad;
     cout<<"Ingrese su peso: ";
@@ -38,6 +41,8 @@ int main(){
     cout<< "Ingrese su genero (Utilice: ""M"" para masculino, ""F"" para femenino, ""O"" para otro.): ";
     cin >> person.genero;
     FILE.write(reinterpret_cast<char*>(&person), sizeof(Person));
+    cout<<endl;
+    cin.ignore();
     }
     FILE.close();
 
