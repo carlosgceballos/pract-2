@@ -7,31 +7,37 @@ using namespace std;
 struct Person {
   int id_registro;
   char nombre[50];
-  int cedula;
+  float cedula;
   int edad;
   float peso;
   float altura;
-  char genero[1];
+  char genero[2];
 };
 
 
 int main(){
+  
   int c;
   cout<<"Ingrese el ID del archivo que desea usar: ";
   cin>>c;
  Person x;
- fstream FILE("./archivo.bin",ios::in|ios::binary);
- FILE.seekg(sizeoof(Person)* c, ios::beg);
- cout<<FILE.tellg()<<endl;
- FILE.read(reinterpret_cast<char *>(&x),sizeof(Person));
+ fstream Archivo("./archivo.bin",ios::in|ios::binary);
+ if (!Archivo){
+  cout<<"Error en lectura del archivo"<<endl;
+  return 1;
+ }
 
- cout<<x.nombre;
- cout<<x.cedula;
- cout<<x.edad;
- cout<<x.altura;
- cout<<x.genero;
+ Archivo.seekg(sizeof(Person)* (c-1), ios::beg);
+ Archivo.read(reinterpret_cast<char *>(&x),sizeof(Person));
 
- FILE.close()
+ cout<<"Nombre: "<<x.nombre<<endl;
+ cout<<"Cedula: "<<x.cedula<<endl;
+ cout<<"Edad: "<<x.edad<<endl;
+ cout<<"Peso: "<<x.peso<<endl;
+ cout<<"Altura: "<<x.altura<<endl;
+ cout<<"Genero: "<<x.genero<<endl;
+
+ Archivo.close();
 
 
 
